@@ -30,7 +30,7 @@ function reminderOf() {
 
     // parse input
     var a = parseFloat(inputA.value) || 0.0;
-    var b = parseFloat(inputB.value) || 1.0;
+    var b = parseFloat(inputB.value) || 0.0;
 
     // prevents division by zero and shows warnings.
     if (b == 0) {
