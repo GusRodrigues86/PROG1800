@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example</title>
+    <script langauge="javascript">
+        var counter = 0;
+        window.setInterval("refreshDiv()", 1000);
+        function refreshDiv() {
+            counter = counter + 1;
+            document.getElementById("test").innerHTML = "Testing " + counter;
+        }
+    </script>
+</head>
+<body>
+
+    <div id="bottom-bar">test
+    </div>
+
+    <div id="test">
+        Testing
+    </div>
+    <div id="staticBlock">
+        This is a static block
+    </div>
+</body>
+
+
+</html>

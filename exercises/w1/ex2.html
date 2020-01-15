@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Ex2</title>
+    </head>
+
+    <body>
+        <h1 id="result"></h1>
+    </body>
+    <script>
+        var a = prompt('Provides a number: ');
+        // converts a to number
+
+        while (isNaN(a)) {
+            a = prompt('Provides a number: ');
+        }
+        a = parseInt(a);
+        do {
+            var b = prompt('Provides another number: ');
+            // converts b to number
+        } while (isNaN(b));
+        b = parseInt(b);
+        document.getElementById("result").innerHTML = a + b;
+    </script>
+
+</html>

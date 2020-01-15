@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- index.html
+    inClass 1
+
+    Revision History:
+        Gustavo Bonifacio Rodrigues, 2020.01.14: Created
+-->
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <title>inClass assignment</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" media="screen" href="style/main.css">
+        <script type="text/javascript" src="js/main.js"></script>
+    </head>
+
+    <body class="shadow">
+        <fieldset>
+            <legend>Select one operation</legend>
+            <button class="shadow" onclick="sumForm()">Sum</button>
+            <button class="shadow" onclick="moduloForm()">Modulo (reminder)</button>
+        </fieldset>
+
+        <fieldset id="sum" class="shadow">
+            <legend><h2>Sum of Integers</h2></legend>
+            <form>
+                <p>
+                    <label for="sumA" >First Number:</label>
+                    <input type="number" id="sumA" onblur="sumTwoValues()">
+                    <br>
+                    <label for="sumB">Second Number:</label>
+                    <input type="number" id="sumB" onblur="sumTwoValues()">
+                </p>
+                <p>The sum is <span id="sumResult" class="result"></span></p>
+            </form>
+        </fieldset>
+        <fieldset id="modulo" class="shadow">
+            <legend><h2>Modulo Operation (reminder of division)</h2></legend>
+            <form>
+                <p>
+                    <label for="remA">First Number:</label>
+                    <input type="number" id="remA" onblur="reminderOf()">
+                    <br>
+                    <label for="remB">Divided by Number:</label>
+                    <input type="number" id="remB" onblur="reminderOf()">
+                </p>
+                <p>The reminder is <span id="moduloResult" class="result"></span></p>
+            </form>
+        </fieldset>
+
+    </body>
+<script type="text/javascript" src="js/calculations.js"></script>
+</html>
