@@ -27,6 +27,7 @@ body {
 .score {
     color: var(--score-color);
     font-family: monospace;
+    font-size: 150%;
 }
 
 .question {
