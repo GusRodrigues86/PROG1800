@@ -10,6 +10,11 @@
     <body>
         <h1 id="result"></h1>
         <script>
+
+            /**
+             * @param a the first term to be summed
+             * @param b the second term to be summed 
+             */
             function add(a, b) {
                 var sum = a + b;
                 document.getElementById("result").innerHTML = sum;
@@ -32,9 +37,8 @@
                 var b = inputInt("Type the second number");
                 add(a, b);
             }
-
-            performAdd();
         </script>
+        <button onclick="performAdd()">Sum two numbers!</button>
     </body>
 
 </html>
