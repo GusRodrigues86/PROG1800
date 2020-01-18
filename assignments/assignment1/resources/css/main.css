@@ -5,60 +5,115 @@
 
 :root {
     --backgroung: #121212;
-    --card-background: #fafafa12;
-    --text-color: #D0D0D0;
-    --text-offset: #AFAFAF;
-    --wrong: #FF0266;
-    --right: #01A299;
+    --card-background: #fFfFfF22;
+    --text: #FFFFFF95;
+    --text-offset: #FFFFFF60;
+    --wrong: #FF026687;
+    --right: #01A29987;
+    --right-off: #01A29950;
     --score-color: #f9a825;
 }
 
 html {
     background-color: var(--backgroung);
-    color: var(--text-color);
+    color: var(--text);
 }
 
 body {
     width: 85%;
     margin: 1em auto;
+    text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    margin: 0.25em auto;
 }
 
 .score {
     color: var(--score-color);
     font-family: monospace;
     font-size: 150%;
+    font-weight: 200;
 }
 
 .question {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1em;
+}
+
+.card p {
+    font-size: 100%;
+    font-weight: 400;
+}
+
+.questionBox {
     padding: 0.3em;
     min-width: 100px;
-    width: 10%;
+    width: 15%;
     border-radius: 5px;
-    margin: 0.5em 0;
+    margin: 0.5em auto;
     font-family: monospace;
     text-align: center;
     display: inline-block;
     background-color: #D0D0D020;
-    font-size: 120%;
+    font-size: 130%;
 }
 
 .right {
-    color: var(--right);
+    background: var(--right);
 }
 
 .wrong {
-    color: var(--wrong);
+    background: var(--wrong);
+}
+
+.box:hover, .box:focus {
+    background-color: var(--card-background);
+    border: 1px solid var(--text-offset);
+}
+
+.box {
+    border: 1px solid #00000000;
+    line-height: 1.5em;
+    text-align: left;
 }
 
 .card {
     border-radius: 5px;
     background-color: var(--card-background);
-    color: var(--text-offset);
+    color: var(--text);
     padding: 0.5em;
-    min-width: 340px;
+    width: 80%;
+    margin: 0.3em auto;
 }
 
 .shadow {
     box-shadow: 0 1px 1px rgba(255, 255, 255, 0.18), 0 1px 2px rgba(255, 255, 255, 0.18);
+}
+
+.buttonTrue {
+    margin: 0.5em;
+    background: var(--right-off);
+    color: var(--text);
+    padding: 0.5em;
+    border: 0;
+    font-family: monospace;
+}
+
+.button {
+    margin: 0.5em;
+    background: var(--text);
+    color: var(--backgroung);
+    font-weight: bold;
+    padding: 0.5em;
+    border: 0;
+    font-family: monospace;
+    border: 0;
+}
+
+.button:active {
+    background:  var(--card-background);
 }
