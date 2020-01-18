@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <h1 id="result"></h1>
+        <script>
+
+            /**
+             * @param a the first term to be summed
+             * @param b the second term to be summed 
+             */
+            function add(a, b) {
+                var sum = a + b;
+                document.getElementById("result").innerHTML = sum;
+            }
+            // add(20,30);
+            function inputInt(message) {
+                var myInt = prompt(message);
+                while (isNaN(myInt)) {
+                    myInt = prompt("Please, enter a number");
+                }
+                myInt = parseInt(myInt);
+                return myInt;
+            }
+
+            // var a = inputInt("Type the first number");
+            // var b = inputInt("Type the second number");
+
+            function performAdd() {
+                var a = inputInt("Type the first number");
+                var b = inputInt("Type the second number");
+                add(a, b);
+            }
+        </script>
+        <button onclick="performAdd()">Sum two numbers!</button>
+    </body>
+
+</html>
