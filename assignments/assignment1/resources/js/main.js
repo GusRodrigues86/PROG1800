@@ -30,10 +30,10 @@ function loadGame() {
     }
 }
 
+// the following function should go to a diff file that process the question?
 function _buildAnswer(answer) {
     if (answer === "True" || answer === "False") {
         // True of False Button
-        // check answer
         var para = document.createElement("p");
         var btnTrue = document.createElement("button");
         btnTrue.className = "button shadow";
@@ -43,13 +43,24 @@ function _buildAnswer(answer) {
         btnFalse.className = "button shadow";
         btnFalse.innerHTML += "False";
         para.appendChild(btnFalse);
-        
         return para;
     } else {
+        // create button
+
+        // create action
+
         // prompt anser
+        
         // check answer
         return "Prompt"
     }
+}
+/**
+ * Check user answer
+ * @param {*} answer 
+ */
+function checkAnswer(answer) {
+    // logic here
 }
 
 /**
@@ -66,15 +77,15 @@ var questions = [
     },
     {
         "question":"New York's Statue of Liberty was a gift from which country?",
-        "answer":""
+        "answer":"France"
     },
     {
         "question": "A leap year has 365 days?",
         "answer": "False"
     },
     {
-        "question": "",
-        "answer": ""
+        "question": "Who shot first?",
+        "answer": "Han"
     }
 ]
 
