@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercise 2 - Functions</title>
+</head>
+<body>
+    <script>
+        var a = 10; // global var
+        var b = 20; // global var
+
+        function add() {
+            // local parameters has priority over global var
+            // now a is 200
+            let a = 200; // 
+            var c = a + b; // var in a function behaves as let.
+            alert(c);
+        }
+        add(); // will return 30.
+        alert(a); // function mutated a, will print 30, not 10.
+        
+    </script>
+</body>
+</html>
