@@ -11,16 +11,15 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>inClass converter</title>
         <link rel="stylesheet" href="resources/styles/main.css">
+        <script type="text/javascript" src="resources/js/main.js"></script>
     </head>
 
     <body class="elevate">
         <main>
             <h1>Convert Temperature and Length</h1>
-            <p>Temperature: From Celcius(°C) to Fahrenheit (°F) and vice versa</p>
-            <p>Length: From meters (m) to feet (ft) and vice versa</p>
             <div id="selector">
-                <button onclick="" class="btn elevate">Temperature</button>
-                <button onclick="" class="btn elevate">Length</button>
+                <button onclick="temperatureForm()" class="btn elevate">Temperature</button>
+                <button onclick="lengthForm()" class="btn elevate">Length</button>
             </div>
             <form id="temperature">
                 <fieldset>
@@ -28,13 +27,15 @@
     
                     <div class="inputBox">
                         <div>
-                            <input type="number" name="celcius" id="celcius" class="input">
+                            <input type="number" onkeyup="convertToFahrenheit()" name="celcius" id="celcius" class="input">
                         </div>
                         <div class="label">
                             <label for="celcius">Celcius</label>
                         </div>
+                    </div>
+                    <div class="inputBox">
                         <div>
-                            <input type="number" name="fahrenheit" id="fahrenheit" class="input">
+                            <input type="number" onkeyup="convertToCelcius()" name="fahrenheit" id="fahrenheit" class="input">
                         </div>
                         <div class="label ">
                             <label for="fahrenheit">Fahrenheit</label>
@@ -45,25 +46,27 @@
             <form id="length">
                 <fieldset>
                     <legend>Length</legend>
-            
-                    <div class="inputBox">
-                        <div>
-                            <input type="number" name="meters" id="meters" class="input">
+                        <div class="inputBox">
+                            <div>
+                                <input type="number" onkeyup="convertToFeet()" name="meters" id="meters" class="input">
+                            </div>
+                            <div class="label ">
+                                <label for="meters">Meters</label>
+                            </div>
                         </div>
-                        <div class="label ">
-                            <label for="meters">Meters</label>
+                        
+                        <div class="inputBox">
+                            <div>
+                                <input type="number" onkeyup="convertToMeters()" name="feet" id="feet" class="input">
+                            </div>
+                            <div class="label ">
+                                <label for="feet">Feet</label>
+                            </div>
                         </div>
-                        <div>
-                            <input type="number" name="feet" id="feet" class="input">
-                        </div>
-                        <div class="label ">
-                            <label for="feet">Feet</label>
-                        </div>
-                    </div>
                 </fieldset>
             </form>
 
         </main>
     </body>
-
+    <script type="text/javascript" src="resources/js/converters.js"></script>
 </html>
