@@ -1,3 +1,10 @@
+/** Converters.js
+ *      provide functionality to convert between units
+ * 
+ *  Revision History
+ *      Gustavo Bonifacio Rodrigues: 2020.01.22: Created
+ */
+
 /**
  * Convert values in Celcius to Fahrenheit
  */
