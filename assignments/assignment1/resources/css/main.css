@@ -5,10 +5,11 @@
 
 :root {
     --backgroung: #121212;
-    --card-background: #fFfFfF22;
-    --text: #FFFFFF95;
+    --card-background: #fFfFfF15;
+    --text: #FFFFFF98;
     --text-offset: #FFFFFF60;
-    --wrong: #FF026687;
+    --wrong: #FF0266;
+    --wrong-off: #FF026680;
     --right: #01A29987;
     --right-off: #01A29950;
     --score-color: #f9a825;
@@ -33,20 +34,20 @@ h2 {
 }
 
 .score {
-    color: var(--score-color);
+    text-align: left;
     font-family: monospace;
     font-size: 150%;
     font-weight: 200;
+    margin: 0 0 0.5em 0.5em;
+}
+
+.value {
+    color: var(--score-color);
 }
 
 .question {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1em;
-}
-
-.card p {
-    font-size: 100%;
-    font-weight: 400;
 }
 
 .questionBox {
@@ -75,6 +76,22 @@ h2 {
     border: 1px solid var(--text-offset);
 }
 
+.rightAnswer {
+    background-color: var(--right-off) !important;
+    border: 2px solid var(--right) !important;
+    color: #ffffff !important;
+    line-height: 1.5em;
+    text-align: left;
+}
+
+.wrongAnswer {
+    background-color: var(--wrong-off) !important;
+    border: 2px solid var(--wrong) !important;
+    color: #ffffff !important;
+    line-height: 1.5em;
+    text-align: left;
+}
+
 .box {
     border: 1px solid #00000000;
     line-height: 1.5em;
@@ -94,26 +111,19 @@ h2 {
     box-shadow: 0 1px 1px rgba(255, 255, 255, 0.18), 0 1px 2px rgba(255, 255, 255, 0.18);
 }
 
-.buttonTrue {
-    margin: 0.5em;
-    background: var(--right-off);
-    color: var(--text);
-    padding: 0.5em;
-    border: 0;
-    font-family: monospace;
-}
-
-.button {
+.btn {
     margin: 0.5em;
     background: var(--text);
     color: var(--backgroung);
-    font-weight: bold;
-    padding: 0.5em;
+    padding: 0.75em;
     border: 0;
     font-family: monospace;
+    font-weight: bold;
+    font-size: 110%;
     border: 0;
+    border-radius: 4px;
 }
 
-.button:active {
-    background:  var(--card-background);
+.btn:active {
+    background: var(--card-background);
 }

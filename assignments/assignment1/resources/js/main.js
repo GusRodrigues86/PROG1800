@@ -1,11 +1,13 @@
-var score = 0;
+/**
+ * LOAD AFTER ON LOAD
+ */
+window.onload = function() {
+    
+    loadGame(); 
+    document.getElementById("score").innerHTML = score ;
+};
+
 function loadGame() {
-    /*
-    <div id="q1" class="card">
-        Question 1<br>
-        <span id="questionBox1"/>
-    </div>
-    */
     for (var i = 0; i < this.questions.length; i++) {
         var next = (1 + i);
         var box = document.createElement("div");
@@ -14,87 +16,18 @@ function loadGame() {
         box.id = "q" + next; // qi
         box.className = "card box";
         para.innerHTML += "Question " + next;
-        box.appendChild(para);        
-        
+        box.appendChild(para);
+
         var item = document.createElement("span");
-        item.id = "questionBox"+next;
+        item.id = "questionBox" + next;
         item.className = "question";
         item.innerHTML = this.questions[i].question;
 
         para = document.createElement("p");
-        para.innerHTML += _buildAnswer(questions[i].answer).innerHTML;
+        para.innerHTML += buildQuestion(questions[i], i).innerHTML;
         item.appendChild(para);
 
         box.appendChild(item);
         document.getElementById("questionBox").appendChild(box);
     }
 }
-
-// the following function should go to a diff file that process the question?
-function _buildAnswer(answer) {
-    if (answer === "True" || answer === "False") {
-        // True of False Button
-        var para = document.createElement("p");
-        var btnTrue = document.createElement("button");
-        btnTrue.className = "button shadow";
-        btnTrue.innerHTML += "True";
-        para.appendChild(btnTrue);
-        btnFalse = document.createElement("button");
-        btnFalse.className = "button shadow";
-        btnFalse.innerHTML += "False";
-        para.appendChild(btnFalse);
-        return para;
-    } else {
-        // create button
-
-        // create action
-
-        // prompt anser
-        
-        // check answer
-        return "Prompt"
-    }
-}
-/**
- * Check user answer
- * @param {*} answer 
- */
-function checkAnswer(answer) {
-    // logic here
-}
-
-/**
- * Game questions
- */
-var questions = [
-    {
-        "question": "What is the meaning of life the universe and everything?",
-        "answer": "42"
-    },
-    {
-        "question":"What's the name of the fairy in Peter Pan?",
-        "answer":"Thinkerbell"
-    },
-    {
-        "question":"New York's Statue of Liberty was a gift from which country?",
-        "answer":"France"
-    },
-    {
-        "question": "A leap year has 365 days?",
-        "answer": "False"
-    },
-    {
-        "question": "Who shot first?",
-        "answer": "Han"
-    }
-]
-
-
-/**
- * LOAD AFTER ON LOAD
- */
-window.onload = function() {
-    
-    loadGame(); 
-    document.getElementsByClassName("score")[0].innerHTML = score ;
-};
