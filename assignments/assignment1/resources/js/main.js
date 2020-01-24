@@ -1,23 +1,100 @@
-/**
- * Change the visibility of all Questions
- */
-window.onload = function () {
-    var questionList = [1,2,3,4,5];
-    questionList.forEach(element => {
-        document.getElementById("question" + element).style.display = "none";
-    });
-};
+var score = 0;
+function loadGame() {
+    /*
+    <div id="q1" class="card">
+        Question 1<br>
+        <span id="questionBox1"/>
+    </div>
+    */
+    for (var i = 0; i < this.questions.length; i++) {
+        var next = (1 + i);
+        var box = document.createElement("div");
+        var para = document.createElement("p");
 
-/**
- * Switch the visibility of a question.
- * @param {string} questionId the Id
- */
-function changeVisibility(questionId) {
-    var questionCard = document.getElementById(questionId);
+        box.id = "q" + next; // qi
+        box.className = "card box";
+        para.innerHTML += "Question " + next;
+        box.appendChild(para);        
+        
+        var item = document.createElement("span");
+        item.id = "questionBox"+next;
+        item.className = "question";
+        item.innerHTML = this.questions[i].question;
 
-    if (questionCard.style.display === "none") {
-        questionCard.style.display = "block";
-    } else {
-        questionCard.style.display = "none";
+        para = document.createElement("p");
+        para.innerHTML += _buildAnswer(questions[i].answer).innerHTML;
+        item.appendChild(para);
+
+        box.appendChild(item);
+        document.getElementById("questionBox").appendChild(box);
     }
 }
+
+// the following function should go to a diff file that process the question?
+function _buildAnswer(answer) {
+    if (answer === "True" || answer === "False") {
+        // True of False Button
+        var para = document.createElement("p");
+        var btnTrue = document.createElement("button");
+        btnTrue.className = "button shadow";
+        btnTrue.innerHTML += "True";
+        para.appendChild(btnTrue);
+        btnFalse = document.createElement("button");
+        btnFalse.className = "button shadow";
+        btnFalse.innerHTML += "False";
+        para.appendChild(btnFalse);
+        return para;
+    } else {
+        // create button
+
+        // create action
+
+        // prompt anser
+        
+        // check answer
+        return "Prompt"
+    }
+}
+/**
+ * Check user answer
+ * @param {*} answer 
+ */
+function checkAnswer(answer) {
+    // logic here
+}
+
+/**
+ * Game questions
+ */
+var questions = [
+    {
+        "question": "What is the meaning of life the universe and everything?",
+        "answer": "42"
+    },
+    {
+        "question":"What's the name of the fairy in Peter Pan?",
+        "answer":"Thinkerbell"
+    },
+    {
+        "question":"New York's Statue of Liberty was a gift from which country?",
+        "answer":"France"
+    },
+    {
+        "question": "A leap year has 365 days?",
+        "answer": "False"
+    },
+    {
+        "question": "Who shot first?",
+        "answer": "Han"
+    }
+]
+
+
+/**
+ * LOAD AFTER ON LOAD
+ */
+window.onload = function() {
+    
+    loadGame(); 
+    document.getElementsByClassName("score")[0].innerHTML = score ;
+};
