@@ -30,10 +30,10 @@ function reminderOf() {
 
     // parse input
     var a = parseFloat(inputA.value) || 0.0;
-    var b = parseFloat(inputB.value) || 1.0;
+    var b = parseFloat(inputB.value) || 0.0;
 
     // prevents division by zero and shows warnings.
-    if (b == 0) {
+    if (b === 0) { // prevents corruption of 0 check.
         document.getElementById("moduloResult").innerHTML = "Can't divide by Zero!";    
     } else {
         // sum A % B as the result of moduloResult
