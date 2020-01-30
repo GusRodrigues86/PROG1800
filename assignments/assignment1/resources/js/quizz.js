@@ -18,13 +18,13 @@ function buildQuestion(question, index) {
     let answer = question.answer;
     question = question.question;
     let para = document.createElement("p");
-    
+
     if (answer === "True" || answer === "False") {
         // True of False Button       
         let btnTrue = document.createElement("button");
         btnTrue.className = "btn shadow";
         btnTrue.innerHTML += "True";
-        btnTrue.setAttribute("onclick","trueOrFalseQuestion(\'True\')");
+        btnTrue.setAttribute("onclick", "trueOrFalseQuestion(\'True\')");
         para.appendChild(btnTrue);
         let btnFalse = document.createElement("button");
         btnFalse.className = "btn shadow";
@@ -56,7 +56,12 @@ function promptQuestion(index) {
 
     let input = prompt(game.question, ""); // prompt answer
     input = input.trim().toLowerCase(); // forces lowercase comparisson with no empty spaces
-    
+
+    if (index == 0) {
+        input = calculateAnswer(input);
+        input += ""; // force to be treated as string for answer evaluation
+    }
+
     let answer = isAnswerRight(input, rightAnswer); // evaluate the answer
 
     if (answer) { // right answer
@@ -65,6 +70,17 @@ function promptQuestion(index) {
         updateQuestionBox(index, false);
     }
 };
+
+
+function calculateAnswer(input) {
+    input = parseInt(input);
+
+    while (isNaN(input)) {
+        input = prompt(questions[0].question + " Use numbers only", "");
+        input = parseInt(input);
+    }
+    return input;
+}
 
 /**
  * Evaluates a true/false question.
@@ -97,21 +113,31 @@ function isAnswerRight(input, answer) {
  * @param {boolean} wasRight True if and only if the user guessed it right
  */
 function updateQuestionBox(index, wasRight) {
+
     // create index
-    let qIndex = "q" + (parseInt(index) + 1);
+    index = parseInt(index);
+    let qIndex = "q" + (index + 1);
+    let qBox = document.getElementById(qIndex);
 
     if (wasRight) {
+
+        qBox.className = "card rightAnswer";
         if (!answered.has(index)) {
             score++; // update
             answered.add(index); // saves in memory
+            var mark = document.createElement("span");
+            mark.textContent = " \u2714";
+            qBox.getElementsByTagName("p")[0].appendChild(mark);
         }
         updateScore();
-        document.getElementById(qIndex).className = "card rightAnswer";
     } else {
+        document.getElementById(qIndex).className = "card wrongAnswer";
         if (!answered.has(index)) {
             answered.add(index);
+            var mark = document.createElement("span");
+            mark.textContent = " \u2716";
+            qBox.getElementsByTagName("p")[0].appendChild(mark);
         }
-        document.getElementById(qIndex).className = "card wrongAnswer";
     }
 }
 
@@ -127,7 +153,7 @@ function updateScore() {
  */
 var questions = [
     {
-        "question": "What is the meaning of life the universe and everything?",
+        "question": "14*3 is equal to?",
         "answer": "42"
     },
     {
