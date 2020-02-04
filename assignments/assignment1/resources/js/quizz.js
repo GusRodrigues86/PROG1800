@@ -23,14 +23,9 @@ function buildQuestion(question, index) {
         // True of False Button       
         let btnTrue = document.createElement("button");
         btnTrue.className = "btn shadow";
-        btnTrue.innerHTML += "True";
-        btnTrue.setAttribute("onclick", "trueOrFalseQuestion(\'True\')");
+        btnTrue.textContent = "Answer"
+        btnTrue.setAttribute("onclick", "trueOrFalseQuestion()");
         para.appendChild(btnTrue);
-        let btnFalse = document.createElement("button");
-        btnFalse.className = "btn shadow";
-        btnFalse.innerHTML += "False";
-        btnFalse.setAttribute("onclick", "trueOrFalseQuestion(\'False\')");
-        para.appendChild(btnFalse);
         return para;
     } else {
         // create button
@@ -88,11 +83,13 @@ function calculateAnswer(input) {
  * There is only one true or false question.
  * @param {string} answer The user answer
  */
-function trueOrFalseQuestion(answer) {
+function trueOrFalseQuestion() {
+    let answer = confirm(questions[3].question);
+
     // is the index 3 question
-    if (answer === "True") {
+    if (answer === true) {
         updateQuestionBox(3, false);
-    } else if (answer === "False") {
+    } else if (answer === false) {
         updateQuestionBox(3, true);
     }
 }
