@@ -81,7 +81,6 @@ function calculateAnswer(input) {
  * Evaluates a true/false question.
  * 
  * There is only one true or false question.
- * @param {string} answer The user answer
  */
 function trueOrFalseQuestion() {
     let answer = confirm(questions[3].question);
