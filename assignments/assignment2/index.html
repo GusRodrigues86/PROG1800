@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>My Shop Order</title>
+        <link rel="stylesheet" href="../resources/styles/main.css">
+    </head>
+
+    <body>
+        <main>
+            <h1>My Shop</h1>
+            <form id="orderForm" action="pages/invoice.html" method="post">
+                <fieldset id="customerInformation">
+                    <label for="customerName">Name*:</label>
+                    <input id="customerName" name="customerName" type="text" required>
+                    <label for="customerEmail">Email*:</label>
+                    <input id="customerEmail" name="customerEmail" type="email" required>
+                    <label for="customerPhone">Phone*:</label>
+                    <input id="customerPhone" name="customerPhone" type="tel" required placeholder="xxx-xxx-xxxx">
+                </fieldset>
+                <fieldset id="deliveryInformation">
+                    <label for="deliveryAddress">Address*:</label>
+                    <input type="text" name="deliveryAddress" id="deliveryAddress" required>
+                    <label for="deliveryCity">City*:</label>
+                    <input type="text" name="deliveryCity" id="deliveryCity" required>
+                    <label for="deliveryPostalCode">Postal Code*:</label>
+                    <input type="text" name="deliveryPostalCode" id="deliveryPostalCode" required placeholder="X9X 9X9">
+                    <label for="deliveryProvince">Province*:</label>
+                    <select name="deliveryProvince" id="deliveryProvince">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="1">Quebec</option>
+                        <option value="2">Ontario</option>
+                        <option value="3">Manitoba</option>
+                        <option value="4">Alberta</option>
+                    </select>
+                </fieldset>
+                <fieldset id="products">
+                    <label for="product1">Product 1:</label>
+                    <input type="number" name="product1" id="product1">
+                    <label for="product1">Product 2:</label>
+                    <input type="number" name="product2" id="product2">
+                    <label for="product1">Product 3:</label>
+                    <input type="number" name="product3" id="product3">
+                </fieldset>
+                <fieldset id="shipmentInformation">
+                    <label for="shipmentDeliveryTime">Delivery Time:</label>
+                    <select name="shipmentDeliveryTime" id="shipmentDeliveryTime">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="1">1 day</option>
+                        <option value="2">2 days</option>
+                        <option value="3">3 days</option>
+                        <option value="4">4 days</option>
+                    </select>
+                </fieldset>
+                <button type="submit">Place Order</button>
+            </form>
+        </main>
+
+    </body>
+
+</html>
