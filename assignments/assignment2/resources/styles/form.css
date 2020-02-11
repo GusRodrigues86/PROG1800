@@ -1,8 +1,7 @@
-
-
 form {
     display: block;
-    margin: 0;
+    margin: 1em 0;
+    overflow: auto;
 }
 
 label {
@@ -31,4 +30,8 @@ input[type=text], input[type=number], input[type=email], input[type=tel], select
 
 input:focus, select:focus {
     border-bottom: 2px solid #29B6F6;
+}
+
+button[type=submit] {
+    margin-bottom: 1em;
 }

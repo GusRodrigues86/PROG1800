@@ -15,12 +15,16 @@ body {
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 }
 
-div {
-    display: block;
+main {
+    overflow: auto;
 }
 
 h1 {
     margin-bottom: 0.5em;
+}
+
+div {
+    display: block;
 }
 
 .btn {
@@ -46,4 +50,5 @@ h1 {
     padding: 1.8em;
     word-wrap: break-word;
     display: block;
+    overflow: auto;
 }

@@ -1,22 +1,17 @@
-table {
-    background-color: #ffffff;
-    border-collapse: collapse;
-    border-spacing: 0 1em;
-    word-wrap: break-word;
+.groupBox {
     width: 100%;
+    padding: 1em 0;
+    display: inline-table;
 }
 
-tbody {
-    width: 100%;
+.key {
+    width: 40%;
+    text-align: left;
+    float: left;
 }
 
-tr {
-    vertical-align: baseline;
-    padding: 20px;
-}
-td {
-    margin: 1em;
-}
-td:nth-child(2) {
+.value {
+    width: 40%;
     text-align: right;
+    float: right;
 }
