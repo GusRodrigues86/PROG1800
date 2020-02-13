@@ -11,14 +11,14 @@
     <body>
         <main>
             <h1>My Shop</h1>
-            <form id="orderForm" action="pages/invoice.html" method="post">
+            <form id="orderForm" action="pages/invoice.html" method="post" onsubmit="return buildInformation()">
                 <div id="customerInformation" class="card">
                     <label for="customerName">Name*:</label>
                     <input id="customerName" name="customerName" type="text" required>
                     <label for="customerEmail">Email*:</label>
                     <input id="customerEmail" name="customerEmail" type="email" required>
                     <label for="customerPhone">Phone*:</label>
-                    <input id="customerPhone" name="customerPhone" type="tel" required placeholder="xxx-xxx-xxxx">
+                    <input id="customerPhone" name="customerPhone" type="tel" required minlength="10" maxlength="12" placeholder="xxx-xxx-xxxx">
                 </div>
                 <div id="deliveryInformation" class="card">
                     <label for="deliveryAddress">Address*:</label>
@@ -39,9 +39,9 @@
                 <div id="products" class="card">
                     <label for="product1">Product 1:</label>
                     <input type="number" name="product1" id="product1">
-                    <label for="product1">Product 2:</label>
+                    <label for="product2">Product 2:</label>
                     <input type="number" name="product2" id="product2">
-                    <label for="product1">Product 3:</label>
+                    <label for="product3">Product 3:</label>
                     <input type="number" name="product3" id="product3">
                 </div>
                 <div id="shipmentInformation" class="card">
@@ -61,5 +61,5 @@
         </main>
 
     </body>
-
+    <script src="resources/js/validator.js"></script>
 </html>
