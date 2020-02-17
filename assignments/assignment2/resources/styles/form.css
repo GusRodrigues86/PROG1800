@@ -1,3 +1,10 @@
+/*  form.css
+    styling for the form
+    
+    Revision History
+        Gustavo Bonifacio Rodrigues, 2020.02.15: Created
+*/
+
 form {
     display: block;
     margin: 1em 0;
@@ -34,4 +41,29 @@ input:focus, select:focus {
 
 button[type=submit] {
     margin-bottom: 1em;
+}
+
+input:invalid {
+    border-bottom-color: #900;
+}
+
+input:focus:invalid {
+    outline: none;
+}
+
+.error {
+    width: 100%;
+    padding: 0.25em;
+    margin-top: 0;
+    margin-bottom: 1em;
+    font-size: 80%;
+    color: red;
+    font-weight: bold;
+    box-sizing: border-box;
+    display: none;
+}
+
+.error.active {
+    padding: 0.3em;
+    display: block;
 }

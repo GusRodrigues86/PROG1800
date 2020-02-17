@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<!-- index.html
+        Main form page
+
+    Revision History
+        Gustavo Bonifacio Rodrigues, 2020.02.15: Created
+-->
 <html lang="en">
 
     <head>
@@ -6,43 +12,60 @@
         <title>My Shop Order</title>
         <link rel="stylesheet" href="resources/styles/main.css">
         <link rel="stylesheet" href="resources/styles/form.css">
+        <script defer src="resources/js/validator.js"></script>
     </head>
 
     <body>
         <main>
             <h1>My Shop</h1>
-            <form id="orderForm" action="pages/invoice.html" method="post" onsubmit="return buildInformation()">
+            <form id="orderForm" action="pages/invoice.html" method="post" novalidate>
                 <div id="customerInformation" class="card">
                     <label for="customerName">Name*:</label>
                     <input id="customerName" name="customerName" type="text" required>
+                    <span class="error"></span>
                     <label for="customerEmail">Email*:</label>
                     <input id="customerEmail" name="customerEmail" type="email" required>
+                    <span class="error"></span>
                     <label for="customerPhone">Phone*:</label>
-                    <input id="customerPhone" name="customerPhone" type="tel" required minlength="10" maxlength="12" placeholder="xxx-xxx-xxxx">
+                    <input id="customerPhone" name="customerPhone" type="tel" required minlength="12" maxlength="12"
+                        pattern="\d{3}[-]\d{3}[-]\d{4}" placeholder="xxx-xxx-xxxx">
+                    <span class="error"></span>
                 </div>
                 <div id="deliveryInformation" class="card">
                     <label for="deliveryAddress">Address*:</label>
                     <input type="text" name="deliveryAddress" id="deliveryAddress" required>
+                    <span class="error"></span>
                     <label for="deliveryCity">City*:</label>
                     <input type="text" name="deliveryCity" id="deliveryCity" required>
+                    <span class="error"></span>
                     <label for="deliveryPostalCode">Postal Code*:</label>
-                    <input type="text" name="deliveryPostalCode" id="deliveryPostalCode" required placeholder="X9X 9X9">
+                    <span class="error"></span>
+                    <input type="text" name="deliveryPostalCode" id="deliveryPostalCode" required placeholder="X9X 9X9" maxlength="7" minlength="7">
+                    <span class="error"></span>
                     <label for="deliveryProvince">Province*:</label>
                     <select name="deliveryProvince" id="deliveryProvince">
-                        <option disabled selected value> -- select an option -- </option>
-                        <option value="1">Quebec</option>
-                        <option value="2">Ontario</option>
-                        <option value="3">Manitoba</option>
-                        <option value="4">Alberta</option>
+                        <option disabled selected> -- select an option -- </option>
+                        <option value="AB">Alberta</option>
+                        <option value="BC">British Columbia</option>
+                        <option value="MB">Manitoba</option>
+                        <option value="NB">New Brunswick</option>
+                        <option value="NL">Newfoundland and Labrador</option>
+                        <option value="NS">Nova Scotia</option>
+                        <option value="ON">Ontario</option>
+                        <option value="PE">Prince Edward Island</option>
+                        <option value="QC">Quebec</option>
+                        <option value="SK">Saskatchewan</option>
                     </select>
+                    <span class="error"></span>
                 </div>
                 <div id="products" class="card">
+                    <span id="productError" class="error"></span>
                     <label for="product1">Product 1:</label>
-                    <input type="number" name="product1" id="product1">
+                    <input type="number" name="product1" id="product1" min="0" value="0">
                     <label for="product2">Product 2:</label>
-                    <input type="number" name="product2" id="product2">
+                    <input type="number" name="product2" id="product2" min="0" value="0">
                     <label for="product3">Product 3:</label>
-                    <input type="number" name="product3" id="product3">
+                    <input type="number" name="product3" id="product3" min="0" value="0">
                 </div>
                 <div id="shipmentInformation" class="card">
                     <label for="shipmentDeliveryTime">Delivery Time:</label>
@@ -53,6 +76,7 @@
                         <option value="3">3 days</option>
                         <option value="4">4 days</option>
                     </select>
+                    <span class="error"></span>
                 </div>
                 <div>
                     <button type="submit" class="btn">Place Order</button>
@@ -62,4 +86,5 @@
 
     </body>
     <script src="resources/js/validator.js"></script>
+
 </html>
