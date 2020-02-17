@@ -19,54 +19,38 @@
         <main>
             <h1>My Shop's Invoice</h1>
             <div class="card">
-                <div class="groupBox">
-                    <div class="key">
-                        Name:
-                    </div>
-                    <div class="value">
-                        John Doe
-                    </div>
-                    <div class="key">
-                        Email:
-                    </div>
-                    <div class="value">
-                        Example@test.com
-                    </div>
-                    <div class="key">
-                        Phone:
-                    </div>
-                    <div class="value">
-                        416-555-5123
-                    </div>
-                </div>
-                <div class="groupBox">
-                    <div class="key">Delivery Address:</div>
-                    <div class="value">
-                        <span>123 XYZ Street</span>,<br>
-                        <span>Toronto</span>,<br>
-                        <span>Province</span>, <span>X9X 9X9</span>
-                    </div>
-                </div>
-                <div class="groupBox">
-                    <div class="key">3 product 1 @ $10.00</div>
-                    <div class="value">$ 30.00</div>
-                    <div class="key">2 product 2 @ $20.00</div>
-                    <div class="value">$ 40.00</div>
-                    <div class="key">1 product 3 @ $30.00</div>
-                    <div class="value">$ 30.00</div>
-                    <div class="key">Shipping Charges:</div>
-                    <div class="value">$ 20.00</div>
-                </div>
-                <div class="groupBox">
-                    <div class="key">Subtotal</div>
-                    <div class="value">$ 120.00</div>
-                    <div class="key">Taxes @ 13%</div>
-                    <div class="value">$ 15.60</div>
-                </div>
-                <div class="groupBox">
+                <div class="groupBox" id="customer">
 
-                    <div class="key">Total</div>
-                    <div class="value">$ 135.60</div>
+
+
+                </div>
+                <div class="groupBox" id="delivery">
+
+                </div>
+                <div class="groupBox" id="products">
+                    <div id="p1" class="groupLine">
+                        <div class="key">3 product 1 @ $10.00</div>
+                        <div class="value">$ 30.00</div>
+                    </div>
+                    <div id="p2" class="groupLine">
+                        <div class="key">2 product 2 @ $20.00</div>
+                        <div class="value">$ 40.00</div>
+                    </div>
+                    <div id="p3" class="groupLine">
+                        <div class="key">1 product 3 @ $30.00</div>
+                        <div class="value">$ 30.00</div>
+                    </div>
+                    <div id="charges" class="groupLine">
+                        <div class="key">Shipping Charges:</div>
+                        <div class="value">$ 20.00</div>
+                    </div>
+
+                </div>
+                <div class="groupBox" id="subtotal">
+                    
+                </div>
+                <div class="groupBox" id="total">
+                    
                 </div>
             </div>
         </main>

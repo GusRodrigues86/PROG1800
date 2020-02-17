@@ -314,6 +314,8 @@
             // create a session cookies
              sessionStorage['customerInfo'] = JSON.stringify(createCustomer());
             sessionStorage['deliveryInfo'] = JSON.stringify(createDeliveryAddress());
+            sessionStorage['products'] = JSON.stringify(createProductSelection());
+            sessionStorage['shipment'] = JSON.stringify(createShipment());
             form.submit();
         }
 
@@ -325,9 +327,9 @@
      */
     function createCustomer() {
         return {
-            "cName": cName.value,
-            "cPhone": cPhone.value,
-            "cEmail": cEmail.value,
+            "Name": cName.value,
+            "Phone": cPhone.value,
+            "Email": cEmail.value,
         };
 
     }
@@ -341,13 +343,32 @@
         prov = getSelectedOption(prov);
         
         return {
-            "dAddress": dAddress.value,
-            "dCity": dCity.value,
-            "dPostal": dPostal.value,
-            "dProvince": prov.value,
+            "Address": dAddress.value,
+            "City": dCity.value,
+            "Postal": dPostal.value,
+            "Province": prov.value,
         };
     }
 
+    /**
+     * Creates an array to be converted as JSON with the product selection
+     * @returns an array with product selection
+     */
+    function createProductSelection() {
+        return {
+            "p1": document.getElementById("product1").value,
+            "p2": document.getElementById("product2").value,
+            "p3": document.getElementById("product3").value,
+        };
+    }
+
+    /**
+     * Creates an array to be converted to JSON with shipment information
+     * @returns an array with shipment information
+     */
+    function createShipment() {
+        return {"shipmentTime": getSelectedOption(shipment).value};
+    }
     /**
      * Extracts the selection option from selection box
      * @param {HTMLSelectElement} selection the Selection box to be inspected
