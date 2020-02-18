@@ -4,14 +4,18 @@
  *  Revision History
  *      Gustavo Bonifacio Rodrigues, 2020.02.15: Created
  */
+
+window.onload = function () {
+    // only the forms that attach the 
+    if (sessionStorage['customerInfo'] == null) { 
+        window.location = '../index.html';
+    }
+    createInvoice();
+};
 let customerInfo = JSON.parse(sessionStorage['customerInfo']);
 let deliveryInfo = JSON.parse(sessionStorage['deliveryInfo']);
 let productInfo = JSON.parse(sessionStorage['products']);
 let shipment = JSON.parse(sessionStorage['shipment']);
-
-window.onload = function () {
-    createInvoice();
-};
 
 
 function createInvoice() {
