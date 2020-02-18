@@ -1,0 +1,10 @@
+/* main.css
+    Main styling for the inclass
+
+    Revision History
+        Gustavo Bonifacio Rodrigues, 2020.02.18: Created
+*/
+* {
+    margin: 0;
+    padding: 0;
+}
