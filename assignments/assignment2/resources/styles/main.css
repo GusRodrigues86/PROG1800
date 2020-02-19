@@ -59,3 +59,13 @@ div {
     display: block;
     overflow: auto;
 }
+
+.warningBox {
+    padding: 1em;
+    text-align: center;
+    display: block;
+    background-color: #b61827;
+    color: white;
+    border-radius: 6px;
+    border: 1px solid #9b0000;
+}

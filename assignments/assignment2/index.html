@@ -12,11 +12,13 @@
         <title>My Shop Order</title>
         <link rel="stylesheet" href="resources/styles/main.css">
         <link rel="stylesheet" href="resources/styles/form.css">
+        <script defer src="resources/js/main.js"></script>
         <script defer src="resources/js/validator.js"></script>
     </head>
 
     <body>
         <main>
+            <div id="warning" class="warningBox">Fill the form before checking the invoice.</div>
             <h1>My Shop</h1>
             <form id="orderForm" action="pages/invoice.html" method="post" novalidate>
                 <div id="customerInformation" class="card">
@@ -51,20 +53,23 @@
                         <option value="NB">New Brunswick</option>
                         <option value="NL">Newfoundland and Labrador</option>
                         <option value="NS">Nova Scotia</option>
+                        <option value="NT">Northwest Territories</option>
+                        <option value="NU">Nunavut</option>
                         <option value="ON">Ontario</option>
                         <option value="PE">Prince Edward Island</option>
                         <option value="QC">Quebec</option>
                         <option value="SK">Saskatchewan</option>
+                        <option value="YT">Yukon</option>
                     </select>
                     <span class="error"></span>
                 </div>
                 <div id="products" class="card">
                     <span id="productError" class="error"></span>
-                    <label for="product1">Product 1:</label>
+                    <label for="product1">Real Bigfoot Air Freshner:</label>
                     <input type="number" name="product1" id="product1" min="0" value="0">
-                    <label for="product2">Product 2:</label>
+                    <label for="product2">Fake Mustache:</label>
                     <input type="number" name="product2" id="product2" min="0" value="0">
-                    <label for="product3">Product 3:</label>
+                    <label for="product3">Yodeling pants:</label>
                     <input type="number" name="product3" id="product3" min="0" value="0">
                 </div>
                 <div id="shipmentInformation" class="card">
