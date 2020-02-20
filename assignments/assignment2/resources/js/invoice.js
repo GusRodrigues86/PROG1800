@@ -133,10 +133,10 @@ function createInvoice() {
     let shippingChargesKey = document.createElement('div');
     shippingChargesKey.className = 'key'
     shippingChargesKey.textContent = "Shipping charges for " + shipment.shipmentTime + " day(s) delivery:";
-    
+
     let shippingChargesValue = document.createElement('div');
-    shippingChargesValue.className = 'value'
-    shippingChargesValue.textContent = "$ " + (shipmentCost[parseInt(shipment.shipmentTime)]).toFixed(2);
+    shippingChargesValue.className = 'value';
+    shippingChargesValue.textContent = "$ " + calculateShipment().toFixed(2);
     productLine.appendChild(shippingChargesKey);
     productLine.appendChild(shippingChargesValue);
     productBox.appendChild(productLine)
@@ -233,9 +233,23 @@ function getSubtotal() {
     let p1Value = productCost.p1 * parseFloat(productInfo.p1);
     let p2Value = productCost.p2 * parseFloat(productInfo.p2);
     let p3Value = productCost.p3 * parseFloat(productInfo.p3);
-    let shipmentValue = shipmentCost[parseInt(shipment.shipmentTime)];
-
+    let shipmentValue = calculateShipment();
     return p1Value + p2Value + p3Value + shipmentValue;
+}
+
+/**
+ * return the total cost of shipment
+ * @returns {Number} the value as a number of the shippment
+ */
+function calculateShipment() {
+    let selection = parseInt(shipment.shipmentTime);
+    switch (selection) {
+        case 1: return 40; break;
+        case 2: return 30; break;
+        case 3: return 20; break;
+        case 4: return 10; break;
+        default: return 40; break;
+    }
 }
 
 /**
