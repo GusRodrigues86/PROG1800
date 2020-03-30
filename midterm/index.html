@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- index.html
+        Main page for the midterm
+
+        Revision history:
+            Gustavo Bonifacio Rodrigues, 2020.02.27: Created
+-->
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Jack's Print shop</title>
+        <link rel="stylesheet" href="resources/style/main.css">
+        <script defer src="resources/js/main.js"></script>
+    </head>
+
+    <body>
+        <div id="customerUsage">
+            <form>
+                <label for="colorPrint">$0.50 each page Color printed:</label>
+                <input type="text" pattern="^\d*$" id="colorPrint" value="0" placeholder="0">
+                <label for="grayPrint">$0.20 each page Grayscale printed:</label>
+                <input type="text" pattern="^\d*$" id="grayPrint" value="0" placeholder="0">
+                <label for="scan">$0.25 each page scanned:</label>
+                <input type="text" pattern="^\d*$" id="scan" value="0" placeholder="0">
+                <label for="internetUsage">Used the internet?</label>
+                <select name="internetUsage" id="internetUsage">
+                    <option value="false" selected>No</option>
+                    <option value="true">Yes</option>
+                </select>
+            </form>
+        </div>
+        <div id="invoice">
+            <div class="groupBox" id="colorPrints">
+                <div class="key" id="colorK"></div>
+                <div class="value" id="colorV">2</div>
+            </div>
+            <div class="groupBox" id="grayPrints">
+                <div class="key" id="grayK"></div>
+                <div class="value" id="grayV">2</div>
+            </div>
+            <div class="groupBox" id="pagesScanned">
+                <div class="key" id="scanK"></div>
+                <div class="value" id="scanV">2</div>
+            </div>
+            <div class="groupBox" id="internet">
+                <div class="key" id="internetK">asd</div>
+                <div class="value" id="internetV">2</div>
+            </div>
+            <div class="groupBox" id="subTotal">
+                <div class="key" id="subtotalK">asd</div>
+                <div class="value" id="subtotalV">2</div>
+            </div>
+            <div class="groupBox" id="tax">
+                <div class="key" id="taxK">asd</div>
+                <div class="value" id="taxV">2</div>
+            </div>
+            <div class="groupBox" id="total">
+                <div class="key" id="totalK">asd</div>
+                <div class="value" id="totalV">2</div>
+            </div>
+        </div>
+    </body>
+
+</html>

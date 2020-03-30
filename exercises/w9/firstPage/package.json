@@ -1,0 +1,21 @@
+{
+  "name": "class_exercise",
+  "version": "1.0.0",
+  "description": "First express website",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "first",
+    "express",
+    "website"
+  ],
+  "author": "Gustavo Bonifacio Rodrigues",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "ejs": "*"
+  }
+}

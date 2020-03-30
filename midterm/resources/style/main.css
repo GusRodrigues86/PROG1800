@@ -1,0 +1,86 @@
+/* main.css
+    style sheet for midterm
+
+    revision history
+        Gustavo Bonifacio Rodrigues, 2020.02.27: Created
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: antiquewhite;
+}
+
+body {
+    margin: 1em auto;
+    padding: 1.5em 1em;
+    border-radius: 1em;
+    box-shadow: 1px solid #dadce0;
+    border: 1px solid #dadce0;
+    width: 760px;
+    background-color: white;
+}
+
+div {
+    margin: 1em;
+    padding: 1em;
+    border: 1px #cfcfcf solid;
+    border-radius: 1em;
+    box-shadow: 1px solid #dadce0;
+    border: 1px solid #dadce0;
+    background-color: white;
+}
+
+#customerUsage, #invoice {
+    width: 85%;
+}
+
+input[type=text], select {
+    width: 50%;
+}
+
+input:invalid {
+    border-bottom-color: #900;
+}
+
+form {
+    display: grid;
+    overflow: auto;
+}
+
+label {
+    margin-top: 1em;
+}
+
+.groupLine {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+.groupBox {
+    width: 95%;
+    padding: 1em 0;
+    display: inline-table;
+}
+
+.key {
+    width: 30%;
+    text-align: left;
+    float: left;
+    clear: both;
+    border: none;
+}
+
+.value {
+    width: 30%;
+    text-align: right;
+    float: right;
+    border: none;
+}
+#invoice {
+    padding: 0 !important;
+}
