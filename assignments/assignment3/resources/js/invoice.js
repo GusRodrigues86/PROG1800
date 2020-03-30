@@ -15,17 +15,14 @@ const shipmentCost = {1:40, 2:30, 3:20, 4:10};
 let p1total, p2total, p3total;
 /** The selected delivery time */
 let deliveryPrice;
-/** All costs before taxes */
-let subtotal;
-/** The province for tax calculation */
+/** The province */
 let province;
 
 /**
  * Creates the invoice based on the user form
  * @param {JSON} data 
  */
-function createInvoice(data) {
-
+function createInvoice(data, salesTax, shipCost, beforeTax, tax, totalCost) {
     let customer = document.getElementById("customer");
 
     let cName = document.createElement("div");
@@ -146,12 +143,12 @@ function createInvoice(data) {
     productLine.id = 'shipCharges';
     let shippingChargesKey = document.createElement('div');
     shippingChargesKey.className = 'key'
-    deliveryPrice = shipmentCost[parseInt(data['shipmentDeliveryTime'])];
     shippingChargesKey.textContent = "Shipping charges for " + shipmentTime[parseInt(data['shipmentDeliveryTime'])] + " day(s) delivery:";
 
     let shippingChargesValue = document.createElement('div');
     shippingChargesValue.className = 'value';
-    shippingChargesValue.textContent = "$ " + deliveryPrice.toFixed(2);
+    shippingChargesValue.textContent = "$ " + shipCost.toFixed(2);
+    
     productLine.appendChild(shippingChargesKey);
     productLine.appendChild(shippingChargesValue);
     productBox.appendChild(productLine)
@@ -167,7 +164,7 @@ function createInvoice(data) {
     subTotalKey.textContent = 'Subtotal: ';
     let subTotalValue = document.createElement('div');
     subTotalValue.className = 'value';
-    subTotalValue.textContent = '$ ' + getSubtotal().toFixed(2); // sum all the products
+    subTotalValue.textContent = '$ ' + beforeTax.toFixed(2); // sum all the products
     subTotal.appendChild(subTotalKey);
     subTotal.appendChild(subTotalValue);
     // calculate taxes
@@ -175,10 +172,10 @@ function createInvoice(data) {
     taxes.className = 'groupLine'
     let taxesKey = document.createElement('div');
     taxesKey.className = 'key';
-    taxesKey.textContent = 'Taxes @ ' + getTotalTaxesByProvince() + "%";
+    taxesKey.textContent = 'Taxes @ ' + salesTax + "%";
     let taxesValue = document.createElement('div');
     taxesValue.className = 'value';
-    taxesValue.textContent = '$ ' + calculateTaxes().toFixed(2); // calculate based on the subtotal
+    taxesValue.textContent = '$ ' + tax.toFixed(2); // calculate based on the subtotal
     taxes.appendChild(taxesKey);
     taxes.appendChild(taxesValue);
     before.appendChild(subTotal);
@@ -193,50 +190,21 @@ function createInvoice(data) {
     totalKey.textContent = 'Total: ';
     let totalValue = document.createElement('div');
     totalValue.className = 'value';
-    totalValue.textContent = '$ ' + calculateTotal().toFixed(2); //calculate total
+    totalValue.textContent = '$ ' + totalCost.toFixed(2); //calculate total
     box.appendChild(totalKey);
     box.appendChild(totalValue);
     total.appendChild(box);
 
 }
 
-/**
- * With the province code, return the tax %
- * @returns {Number} the tax % (i.e. 10% = 10)
- */
-function getTotalTaxesByProvince() {
-    let taxes;
-    switch (province) {
 
-        case "BC": taxes = 12;
-            break;
-        case "MB": taxes = 12;
-            break;
-        case "NB": taxes = 15;
-            break;
-        case "NL": taxes = 15;
-            break;
-        case "NS": taxes = 15;
-            break;
-        case "ON": taxes = 13;
-            break;
-        case "PE": taxes = 15;
-            break;
-        case "QC": taxes = 14.975;
-            break;
-        case "SK": taxes = 11;
-            break
-        default: taxes = 5;
-    }
-    return taxes;
-}
 
 /**
  * Calculate the tax value from the subtotal
  * @returns {Number} the tax total
  */
 function calculateTaxes() {
-    return getSubtotal() * (parseFloat(getTotalTaxesByProvince()) / 100.0);
+    return getSubtotal() * (taxes) / 100.0;
 }
 
 /**

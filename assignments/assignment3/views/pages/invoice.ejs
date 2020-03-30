@@ -13,14 +13,14 @@
         <title>Shop Invoice</title>
         <link rel="stylesheet" href="../resources/styles/main.css">
         <link rel="stylesheet" href="../resources/styles/invoice.css">
-        
-       
+
+
     </head>
 
     <body>
         <main>
-            
-            
+
+
 
             <h1>My Shop's Invoice</h1>
             <div class="card">
@@ -34,19 +34,23 @@
 
                 </div>
                 <div class="groupBox" id="subtotal">
-                    
+
                 </div>
                 <div class="groupBox" id="total">
-                    
+
                 </div>
             </div>
         </main>
-        
     </body>
 <script src="../resources/js/invoice.js"></script>
-<script src="../resources/js/test.js"></script>
 <script defer>createInvoice(
-                <%- JSON.stringify(invoice) %> 
-                );
+                <%- JSON.stringify(invoice) + ',' + 
+                JSON.stringify(taxPercent) + ',' + 
+                JSON.stringify(shipCost) + ',' + 
+                JSON.stringify(subtotal) + ',' + 
+                JSON.stringify(tax) + ',' + 
+                JSON.stringify(finalPrice) %>
+            );
 </script>
+
 </html>
