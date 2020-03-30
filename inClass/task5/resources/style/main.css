@@ -1,0 +1,67 @@
+/* main.css
+    Main styling for the inclass
+
+    Revision History
+        Gustavo Bonifacio Rodrigues, 2020.02.18: Created
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main {
+    margin: auto;
+    padding: 1em;
+    display: inline-block;
+    justify-content: center;
+}
+
+div {
+    display: block;
+    border-radius: 6px;
+    border: 1px solid black;
+    margin-bottom: 0.25em;
+    padding: 0.25em;
+    text-align: center;
+    width: 450px;
+}
+
+img {
+    position: relative;
+}
+
+.greenBox, .orangeBox, .purpleBox {
+    color: black;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    vertical-align: middle;
+    border: none;
+}
+
+.purpleBox {
+    position: relative;
+    background-color: #651fff !important;
+    color: white;
+    font-family: monospace;
+    font-weight: bold;
+    width: 100px;
+    overflow: visible !important;
+}
+
+.greenBox {
+    background-color: #14cba8 !important;
+    color: white;
+    font-size: bold;
+}
+
+.orangeBox {
+    background-color: #ff3d00 !important;
+}

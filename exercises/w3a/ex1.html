@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Week3 - Ex1 - form</title>
+</head>
+<body>
+    <main>
+        <form action="process.html" method="GET">
+            <label for="uname">Name</label>
+            <input type="text" name="uname" id="uname">
+            <br><br><br>
+
+            <label for="phone">Phone</label>
+            <input type="text" name="phone" id="phone">
+            <br><br><br>
+
+            <input type="submit" value="testing" name="submit">
+            <br><br><br>
+        </form>
+
+        <a href="process.html?uname=John&phone=1231231231&submit=testing">Click here to auto fill and submit</a>
+
+    </main>
+</body>
+</html>

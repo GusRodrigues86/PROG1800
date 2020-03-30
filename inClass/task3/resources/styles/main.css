@@ -1,0 +1,50 @@
+/** Imports the font from googlde CDN to the page. */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    color: #ffffff;
+}
+
+body {
+    margin: 1em auto;
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    color: #00000088;
+    overflow-y: hidden;
+}
+
+.btn {
+    margin: 0 auto;
+    padding: 1em;
+    color: #ffffff;
+    background-color: #00000088;
+    border-radius: 6px;
+    width: 200px;
+    text-align: center;
+}
+
+.countdown {
+    font-size: 1em;
+    color: #00000088;
+    -webkit-text-fill-color: #ffffff;
+    -webkit-text-stroke-color: #fcc561;
+    -webkit-text-stroke-width: 1px;
+}
+
+.rocket {
+    color: #00000088;
+    position: absolute;
+    left: 35%;
+    bottom: -600px;
+    animation: fly 3s .5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+/* Create animation type fly*/
+@keyframes fly {
+    0% {bottom: -100%;}
+    100% {bottom: 100%;}
+}
