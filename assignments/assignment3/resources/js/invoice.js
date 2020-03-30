@@ -196,30 +196,3 @@ function createInvoice(data, salesTax, shipCost, beforeTax, tax, totalCost) {
     total.appendChild(box);
 
 }
-
-
-
-/**
- * Calculate the tax value from the subtotal
- * @returns {Number} the tax total
- */
-function calculateTaxes() {
-    return getSubtotal() * (taxes) / 100.0;
-}
-
-/**
- * Calculate the subtotal (sum of products + shippment)
- * @returns {Number} the subtotal
- */
-function getSubtotal() {
-    subtotal = deliveryPrice + parseFloat(p1total) + parseFloat(p2total) + parseFloat(p3total);
-    return subtotal;
-}
-
-/**
- * Sum the total cost (subtotal + taxes)
- * @returns {Number} the total
- */
-function calculateTotal() {
-    return getSubtotal() + calculateTaxes();
-}
