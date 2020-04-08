@@ -5,8 +5,7 @@ window.onload = function () {
         tag.style.display = 'block';
         // remove on click
         tag.addEventListener('click', function () { tag.style.display = 'none' });
-    } else {
-        this.sessionStorage.removeItem("invalid");
-        tag.style.display = 'none';
     }
+    
+    console.log(errors);
 };

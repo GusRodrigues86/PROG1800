@@ -18,7 +18,16 @@
 
     <body>
         <main>
-            <div id="warning" class="warningBox">Fill the form before checking the invoice.</div>
+            <% if(typeof(errors) != 'undefined'){ %>
+                    <div class="warningBox">
+                        <% for(var error of errors){ %>
+                            <p><%= error.msg %></p>
+                        <% } %> 
+                    </div>
+            <% } %>
+            
+
+
             <h1>My Shop</h1>
             <form id="orderForm" action="/invoice" method="post" novalidate>
                 <div id="customerInformation" class="card">

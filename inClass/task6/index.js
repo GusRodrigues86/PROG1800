@@ -3,14 +3,16 @@
  * 
  *  Revision History
  *      Gustavo Bonifacio Rodrigues: 2020.03.28: Created
+ *      Gustavo Bonifacio Rodrigues: 2020.04.08: Serverside validation
  */
+
 var express = require('express');
 var path = require('path');
 // extract form data
 var bodyParser = require('body-parser');
-
+const validator = require('./validators/validator');
 var app = express();
-let province;
+const { check, validationResult } = require('express-validator');
 
 
 
@@ -28,72 +30,118 @@ app.use(express.json());
 
 // point of entry
 app.get('/', function (req, res) {
-    res.render('index.html');
+    res.render('index');
 });
 
-// Post handling
-app.post('/invoice', function (req, res) {
-    // this should be on aa different file, that holds the BL
-    // but how?
-    
-    // the tax ammount
-    function taxByProvince() {
-        let province = req.body['deliveryProvince'];
-        let taxes;
-        switch (province) {
+/**
+* true iff the phone is valid
+*/
+function isPhoneValid(phone) {
+    let phoneRegex = /\d{3}[-]\d{3}[-]\d{4}/;
+    if (!phone || (phone.trim() === "") || !phoneRegex.test(phone)) {
+        throw new Error('Phone fromat must be xxx-xxx-xxxx');
+    }
+    return true;
+}
 
-            case "BC": taxes = 12;
-                break;
-            case "MB": taxes = 12;
-                break;
-            case "NB": taxes = 15;
-                break;
-            case "NL": taxes = 15;
-                break;
-            case "NS": taxes = 15;
-                break;
-            case "ON": taxes = 13;
-                break;
-            case "PE": taxes = 15;
-                break;
-            case "QC": taxes = 14.975;
-                break;
-            case "SK": taxes = 11;
-                break
-            default: taxes = 5;
+/**
+ * true iff postal code is valid for canada
+ */
+function isPostalCodeValid(postalCode) {
+    let postalRegex = /[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][\s]\d[ABCEGHJ-NPRSTV-Z]\d/i;
+    if (!postalCode || (postalCode.trim() === "") ||
+        !postalRegex.test(postalCode)) {
+        throw new Error('Invalid Canadian postal code format. Valid format is X9X 9X9');
         }
-        return taxes;
+        return true;
+}
+
+/**
+ * if the user selected a province
+ * @param {*} province 
+ */
+function isProvinceValid(province) {
+    if (!province)
+    {
+        throw new Error('Select a province');
     }
-    // the cost to ship
-    function shipmentCost() {
-        let selected = req.body['shipmentDeliveryTime'];
-        let costs = { 1: 40, 2: 30, 3: 20, 4: 10 }
-        return costs[selected];
-    }
-    // beforeTaxes
-    function beforeTaxes() {
-        return (parseFloat(req.body['product1']) * 10) + 
-            (parseFloat(req.body['product2']) * 20) + 
-            (parseFloat(req.body['product3']) * 30) +
-            shipmentCost();
-    }
-    function tax() {
-        return beforeTaxes() * taxByProvince() / 100.0;
-    }
-    // total
-    function total() {
-        return beforeTaxes() + tax();
-    }
-    
-    res.render('pages/invoice', { 
-        invoice: req.body, 
-        taxPercent: taxByProvince(),
-        shipCost: shipmentCost(),
-        subtotal: beforeTaxes(),
-        tax: tax(),
-        finalPrice: total()
+    let provinces = ["AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "ON", "PE", "QC", "SK", "YT"];
+    province = province + "";
+    provinces.forEach(p => {
+        if (province.trim().toUpperCase() == 
+        p) {
+            return true;
+        }
     });
-});
+    throw new Error('Invalid province.');
+}
+
+/**
+ * true iff the products are not bellow 0 or at least one above 0.
+ */
+function isProductAmmountValid(value,{req}) {
+    let p1 = req.body.product1;
+    let p2 = req.body.product2;
+    let p3 = req.body.product3;
+
+    if (isNaN(p1) || isNaN(p2) || isNaN(p3)) {
+        throw new Error('Product ammount must be 0 or higher');
+    }
+
+    p1 = parseFloat(p1);
+    p2 = parseFloat(p2);
+    p3 = parseFloat(p3);
+
+    if (p1 == 0 && p2 == 0 && p3 == 0) {
+        throw new Error('Select at least one of the products');
+    }
+    if (p1 < 0 && p2 < 0 && p3 < 0) {
+        throw new Error('Products cannot be negative');
+    }
+    return true;
+}
+
+function isShipmentValid(shipment) {
+    if (isNaN(shipment) || !shipment) {
+        throw new Error('Invalid Delivery Time');
+    }
+    shipment = parseInt(shipment);
+    if (shipment <= 0) {
+        throw new Error('Invalid Delivery Time');
+    }
+    return true;
+}
+// Post handling
+app.post('/invoice',
+    [
+        check('customerName', 'Invalid name').not().isEmpty(),
+        check('customerEmail', 'invalid email').isEmail(),
+        check('customerPhone').custom(isPhoneValid),
+        check('deliveryAddress', 'Invalid address').notEmpty(),
+        check('deliveryCity', 'Invalid city').notEmpty(),
+        check('deliveryProvince').custom(isProvinceValid),
+        check('deliveryPostal').custom(isPostalCodeValid),
+        check('product').custom(isProductAmmountValid),
+        check('shipmentDeliveryTime').custom(isShipmentValid)
+    ],
+    function (req, res) {
+        const errorMessages = validationResult(req);
+        if (errorMessages.isEmpty()) {
+            const form = new validator(req.body);
+            res.render('pages/invoice', {
+                invoice: req.body,
+                taxPercent: form.provinceTax(),
+                shipCost: form.shipmentCost(),
+                subtotal: form.beforeTaxes(),
+                tax: form.tax(),
+                finalPrice: form.total()
+            });
+        }
+        else {
+            res.render('index', {errors:errorMessages.array()})
+        }
+        
+    });
 
 // 404
 app.use(function (req, res) {
