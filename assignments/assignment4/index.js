@@ -52,8 +52,8 @@ function isPostalCodeValid(postalCode) {
     if (!postalCode || (postalCode.trim() === "") ||
         !postalRegex.test(postalCode)) {
         throw new Error('Invalid Canadian postal code format. Valid format is X9X 9X9');
-        }
-        return true;
+    }
+    return true;
 }
 
 /**
@@ -61,15 +61,14 @@ function isPostalCodeValid(postalCode) {
  * @param {*} province 
  */
 function isProvinceValid(province) {
-    if (!province)
-    {
+    if (!province) {
         throw new Error('Select a province');
     }
     let provinces = ["AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "ON", "PE", "QC", "SK", "YT"];
     province = province + "";
     provinces.forEach(p => {
-        if (province.trim().toUpperCase() == 
-        p) {
+        if (province.trim().toUpperCase() ==
+            p) {
             return true;
         }
     });
@@ -79,7 +78,7 @@ function isProvinceValid(province) {
 /**
  * true iff the products are not bellow 0 or at least one above 0.
  */
-function isProductAmmountValid(value,{req}) {
+function isProductAmmountValid(value, { req }) {
     let p1 = req.body.product1;
     let p2 = req.body.product2;
     let p3 = req.body.product3;
@@ -138,10 +137,13 @@ app.post('/invoice',
             });
         }
         else {
-            res.render('index', {errors:errorMessages.array()})
+            res.render('index', { errors: errorMessages.array() })
         }
-        
     });
+
+app.get('/sales', function(req, res) {
+    res.render('sales');
+});
 
 // 404
 app.use(function (req, res) {
