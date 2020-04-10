@@ -21,6 +21,7 @@
     "express-session": "*",
     "express-validator": "*",
     "express-messages": "*",
-    "connect-flash": "*"
+    "connect-flash": "*",
+    "mongoose": "*"
   }
 }

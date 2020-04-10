@@ -10,11 +10,39 @@ var express = require('express');
 var path = require('path');
 // extract form data
 var bodyParser = require('body-parser');
-const validator = require('./validators/validator');
+
+// objects to be handled
+const Validator = require('./validators/validator');
+
 var app = express();
 const { check, validationResult } = require('express-validator');
+const mongoose = require('mongoose');
+const DB_PATH = 'mongodb://localhost:27017/assignment';
+const mongoOptions = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}
+const Order = mongoose.model('Order', {
+    date: Number,
+    name: String,
+    email: String,
+    phone: String,
+    address: String,
+    city: String,
+    province: String,
+    postal: String,
+    p1: Number,
+    p2: Number,
+    p3: Number,
+    deliveryDay: Number,
+    provinceTax: Number,
+    shipmentCost: Number,
+    beforeTaxes: Number,
+    tax: Number,
+    total: Number
+});
 
-
+const db = mongoose.connect(DB_PATH, mongoOptions);
 
 // view resolver
 app.set('views', path.join(__dirname, 'views'));
@@ -61,18 +89,24 @@ function isPostalCodeValid(postalCode) {
  * @param {*} province 
  */
 function isProvinceValid(province) {
+
     if (!province) {
         throw new Error('Select a province');
     }
+    province = province + "".trim();
+    let valid = false;
     let provinces = ["AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "ON", "PE", "QC", "SK", "YT"];
-    province = province + "";
     provinces.forEach(p => {
-        if (province.trim().toUpperCase() ==
-            p) {
-            return true;
+        if (province === p) {
+            valid = true;
         }
     });
-    throw new Error('Invalid province.');
+
+    if (!valid) {
+        throw new Error('Invalid province.');
+    }
+    return valid;
+
 }
 
 /**
@@ -119,14 +153,39 @@ app.post('/invoice',
         check('deliveryAddress', 'Invalid address').notEmpty(),
         check('deliveryCity', 'Invalid city').notEmpty(),
         check('deliveryProvince').custom(isProvinceValid),
-        check('deliveryPostal').custom(isPostalCodeValid),
+        check('deliveryPostalCode').custom(isPostalCodeValid),
         check('product').custom(isProductAmmountValid),
         check('shipmentDeliveryTime').custom(isShipmentValid)
     ],
     function (req, res) {
         const errorMessages = validationResult(req);
         if (errorMessages.isEmpty()) {
-            const form = new validator(req.body);
+            const form = new Validator(req.body);
+            // connect to the db
+            let data = {
+                date: Date.now(),
+                name: form.name,
+                email: form.email,
+                phone: form.phone,
+                address: form.address,
+                city: form.city,
+                province: form.province,
+                postal: form.postal,
+                p1: form.p1,
+                p2: form.p2,
+                p3: form.p3,
+                deliveryDay: form.deliveryDay,
+                provinceTax: form.provinceTax(),
+                shipmentCost: form.shipmentCost(),
+                beforeTaxes: form.beforeTaxes(),
+                tax: form.tax(),
+                total: form.total(),
+            };
+
+            let sale = new Order(data);
+            sale.save().then(() => { console.log('saved') });
+            db;
+
             res.render('pages/invoice', {
                 invoice: req.body,
                 taxPercent: form.provinceTax(),
@@ -141,8 +200,15 @@ app.post('/invoice',
         }
     });
 
-app.get('/sales', function(req, res) {
-    res.render('pages/sales');
+app.get('/sales', function (req, res) {
+    Order.find({}).exec((error, orders) => {
+        if (error === null) {
+            console.log(error);
+        } else {
+            console.log(orders);
+            res.render('pages/sales', {list:orders});
+        }
+    });
 });
 
 // 404

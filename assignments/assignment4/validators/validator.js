@@ -10,7 +10,8 @@ class invoiceValidator {
         this.address = data['deliveryAddress'];
         this.city = data['deliveryCity'];
         this.province = data['deliveryProvince'];
-        this.postal = data['deliveryPostal'];
+        this.postal = data['deliveryPostalCode'];
+        console.log(this.postal);
         this.p1 = parseInt(data['product1']);
         this.p2 = parseInt(data['product2']);
         this.p3 = parseInt(data['product3']);
