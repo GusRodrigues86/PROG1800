@@ -142,7 +142,7 @@ app.post('/invoice',
     });
 
 app.get('/sales', function(req, res) {
-    res.render('sales');
+    res.render('pages/sales');
 });
 
 // 404

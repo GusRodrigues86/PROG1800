@@ -64,7 +64,7 @@ div {
 .warningBox {
     padding: 1em;
     text-align: center;
-    display: block;
+    display: none;
     background-color: #b61827;
     color: white;
     border-radius: 6px;
