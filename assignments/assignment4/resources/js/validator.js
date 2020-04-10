@@ -370,8 +370,7 @@
             shipment.children[0].selected
         ) {
             showErrors();
-            // TODO REMOVE THE COMMENT TO ENABLE CLIENT SIDE VALIDATION.
-            //event.preventDefault();
+            event.preventDefault();
         } else {
             form.submit();
         }

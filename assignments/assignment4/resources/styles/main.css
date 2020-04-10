@@ -3,6 +3,7 @@
     
     Revision History
         Gustavo Bonifacio Rodrigues, 2020.02.15: Created
+        Gustavo Bonifacio Rodrigues, 2020.04.10: Add navbar
 */
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap');
@@ -68,4 +69,31 @@ div {
     color: white;
     border-radius: 6px;
     border: 1px solid #9b0000;
+}
+
+.vSpacer {
+    height: 40px;
+}
+
+nav {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+nav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #b61827;
 }
