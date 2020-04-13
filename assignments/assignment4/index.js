@@ -7,21 +7,23 @@
  */
 
 var express = require('express');
+const mongoose = require('mongoose'); // persistence unit
 var path = require('path');
 // extract form data
 var bodyParser = require('body-parser');
-
 // objects to be handled
 const Validator = require('./validators/validator');
 
 var app = express();
+// server validation
 const { check, validationResult } = require('express-validator');
-const mongoose = require('mongoose');
+// mongoDb info
 const DB_PATH = 'mongodb://localhost:27017/assignment';
 const mongoOptions = {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }
+// Would this be the ORM?
 const Order = mongoose.model('Order', {
     date: Number,
     name: String,
