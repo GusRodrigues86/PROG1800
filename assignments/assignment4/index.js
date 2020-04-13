@@ -200,8 +200,11 @@ app.post('/invoice',
 
 app.get('/sales', function (req, res) {
     Order.find({}).exec((err, orders) => {
-        console.log(err);
-        res.render('pages/sales', { list: orders });
+        if (err === null) {
+            res.render('pages/sales', { list: orders });
+        } else {
+            console.log(err);
+        }
     });
 });
 
