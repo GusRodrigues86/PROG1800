@@ -144,8 +144,9 @@ function isShipmentValid(shipment) {
     }
     return true;
 }
-// Post handling
+// Form handling
 app.post('/invoice',
+// server side validation. May need further sanitation for no Little Bobby Tables
     [
         check('customerName', 'Invalid name').not().isEmpty(),
         check('customerEmail', 'invalid email').isEmail(),
@@ -161,7 +162,7 @@ app.post('/invoice',
         const errorMessages = validationResult(req);
         if (errorMessages.isEmpty()) {
             const form = new Validator(req.body);
-            // connect to the db
+            // create data to be saved and 
             let data = {
                 date: Date.now(),
                 name: form.name,
@@ -181,8 +182,9 @@ app.post('/invoice',
                 tax: form.tax(),
                 total: form.total(),
             };
-
+            
             let sale = new Order(data);
+            // connect to the db and save
             sale.save().then(() => { console.log('saved') });
             res.render('pages/invoice', {
                 invoice: req.body,
@@ -198,17 +200,23 @@ app.post('/invoice',
         }
     });
 
+/**
+ * Sales report route
+ */
 app.get('/sales', function (req, res) {
+    // call mongoDb for data
     Order.find({}).exec((err, orders) => {
+        // no errors, proceed
         if (err === null) {
             res.render('pages/sales', { list: orders });
         } else {
+
             console.log(err);
         }
     });
 });
 
-// 404
+// 404 page
 app.use(function (req, res) {
     res.status(404);
     res.render('pages/error/404.html');

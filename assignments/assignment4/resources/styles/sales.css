@@ -2,7 +2,7 @@
     styling for the sales page
     
     Revision History
-        Gustavo Bonifacio Rodrigues, 2020.02.15: Created
+        Gustavo Bonifacio Rodrigues, 2020.04.12: Created
 */
 
 body {
@@ -41,8 +41,7 @@ body {
 }
 
 .header {
-    color: #f6f6f6;
-    background-color: #333;
+    background-color: #dadce0;
     position: relative;
     font-size: 12px;
     padding: 0.8em;
