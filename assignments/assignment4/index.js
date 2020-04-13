@@ -184,8 +184,6 @@ app.post('/invoice',
 
             let sale = new Order(data);
             sale.save().then(() => { console.log('saved') });
-            db;
-
             res.render('pages/invoice', {
                 invoice: req.body,
                 taxPercent: form.provinceTax(),
@@ -201,13 +199,9 @@ app.post('/invoice',
     });
 
 app.get('/sales', function (req, res) {
-    Order.find({}).exec((error, orders) => {
-        if (error === null) {
-            console.log(error);
-        } else {
-            console.log(orders);
-            res.render('pages/sales', {list:orders});
-        }
+    Order.find({}).exec((err, orders) => {
+        console.log(err);
+        res.render('pages/sales', { list: orders });
     });
 });
 
