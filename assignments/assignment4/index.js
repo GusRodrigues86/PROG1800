@@ -107,6 +107,7 @@ function isProvinceValid(province) {
     if (!valid) {
         throw new Error('Invalid province.');
     }
+
     return valid;
 
 }
