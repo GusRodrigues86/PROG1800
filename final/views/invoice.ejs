@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <%- include('fragment/header') %>
+        <link rel="stylesheet" href="resources/styles/invoice.css">
+    </head>
+
+    <body>
+        <%- include('fragment/navbar') %>
+        <h1>Order details</h1>
+        <div class="card">
+            <div class="groupBox">
+                <b>Name:</b> <%= info.name %>
+            </div>
+            <div class="groupBox">
+                <b>Phone:</b> <%= info.phone %>
+            </div>
+            <div class="groupBox">
+                <b>Total of Mango juices:</b> <%= info.mango %>
+
+            </div>
+            <div class="groupBox">
+                <b>Total of Berry juices: </b><%= info.berry %>
+            </div>
+            <div class="groupBox">
+                <b>Total of Apple juices:</b> <%= info.apple %>
+            </div>
+            <div class="groupBox">
+                <b>Subtotal:</b> $<%= info.subtotal %>
+            </div>
+            <div class="groupBox">
+                <b>Taxes @ 13%: </b>$<%= info.tax %>
+            </div>
+            <div class="groupBox">
+                <b>Total: $</b><%= info.total %>
+            </div>
+        </div>
+        <%- include('fragment/footer') %>
+    </body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<%# invoice.ejs
+        invoice generated from the form page
+
+    Revision History
+        Gustavo Bonifacio Rodrigues, 2020.02.15: Created
+        Gustavo Bonifacio Rodrigues, 2020.03.28: Move to ejs
+%>
+<html lang="en">
+
+    <head>
+        <%- include('../partials/stdHeader') %>
+        <title>Shop Invoice</title>
+        <link rel="stylesheet" href="../resources/styles/invoice.css">
+
+
+    </head>
+
+    <body>
+        <%- include('../partials/navbar') %>
+
+        <main>
+            
+            <h1>My Shop's Invoice</h1>
+            <div class="card">
+                <div class="groupBox" id="customer">
+
+                </div>
+                <div class="groupBox" id="delivery">
+
+                </div>
+                <div class="groupBox" id="products">
+
+                </div>
+                <div class="groupBox" id="subtotal">
+
+                </div>
+                <div class="groupBox" id="total">
+
+                </div>
+            </div>
+        </main>
+    </body>
+<script src="../resources/js/invoice.js"></script>
+<script defer>createInvoice(
+                <%- JSON.stringify(invoice) + ',' + 
+                JSON.stringify(taxPercent) + ',' + 
+                JSON.stringify(shipCost) + ',' + 
+                JSON.stringify(subtotal) + ',' + 
+                JSON.stringify(tax) + ',' + 
+                JSON.stringify(finalPrice) %>
+            );
+</script>
+
+</html>

@@ -1,0 +1,29 @@
+/*  invoice.css
+    styling for the invoice
+    
+    Revision History
+        Gustavo Bonifacio Rodrigues, 2020.02.15: Created
+*/
+.groupLine {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+.groupBox {
+    width: 100%;
+    padding: 1em 0;
+    display: inline-table;
+}
+
+.key {
+    width: 40%;
+    text-align: left;
+    float: left;
+    clear: both;
+}
+
+.value {
+    width: 40%;
+    text-align: right;
+    float: right;
+}

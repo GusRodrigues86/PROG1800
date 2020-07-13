@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<%# sales.ejs
+        sales reporting page
+
+    Revision History
+        Gustavo Bonifacio Rodrigues, 2020.04.10: Created
+%>
+<html lang="en">
+
+    <head>
+        <%- include('../partials/stdHeader') %>
+        <link rel="stylesheet" href="resources/styles/sales.css">
+        <title>My Shop Order</title>
+    </head>
+
+    <body>
+        <%- include('../partials/navbar') %>
+        <h1>Sales Report</h1>
+        <div class="card">
+            <% if (list.length === 0) { %>
+                <div class="card sale">
+                    OH NO. NO SALES!
+                </div>
+            <% } else {
+                for(var order of list) {
+                    %>
+            <div class="card sale">
+                <div class="header">
+                    <div>
+                        <b>ORDER PLACED</b><br>
+                        <%= new Date(order.date).toDateString() %>
+                    </div>
+                    <div>
+                        <b>SHIP TO</b><br>
+                        <%= order.name %>
+                    </div>
+                    <div>
+                        <b>ORDER #</b><br>
+                        <%= order.id %>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="grid">
+                        <div class="item">
+                            <p><%= order.deliveryDay %> day delivery to:<br>
+                                <%= order.address  %></p>
+                            <p><%= order.city %>, <%= order.province  %></p>
+                            <p><%= order.postal  %></p>
+                        </div>
+                        <div class="item">
+                            <% if (order.p1 > 0) {%>
+                            <%= order.p1 %>x Real Bigfoot Air Freshner $ <%= (order.p1 * 10.0).toFixed(2) %>
+                            <br>
+                            <% }%>
+                            <% if (order.p2 > 0) {%>
+                            <%= order.p2 %>x Fake Mustache $ <%= (order.p2 * 20.0).toFixed(2) %>
+                            <br>
+                            <% }%>
+                            <% if (order.p3 > 0) {%>
+                            <%= order.p1 %>x Yodeling pants $ <%= (order.p3 * 30.0).toFixed(2) %>
+                            <br>
+                            <% }%>
+                            <div class="subtotal">
+                                Delivery fee: <span>$ <%= order.shipmentCost.toFixed(2) %></span><br>
+                                Subtotal: <span>$ <%= order.beforeTaxes.toFixed(2) %></span><br>
+                                Taxes for <%= order.province %>: <span>$ <%= order.tax.toFixed(2) %></span><br>
+                                <p>
+                                    Total: <span>$ <b><%= order.total.toFixed(2) %></b></span><br>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }}  %>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,61 @@
+/*  sales.css
+    styling for the sales page
+    
+    Revision History
+        Gustavo Bonifacio Rodrigues, 2020.04.12: Created
+*/
+
+body {
+    width: 800px;
+}
+
+.sale {
+    background-color: #f6f6f6 !important;
+    padding: 0 !important;
+}
+
+.info {
+    background: #fff;
+    padding: 0.5em !important;
+    border-top: 1px solid #dadce0;
+    font-size: 14px;
+}
+
+.grid {
+    display: grid !important;
+    grid-template-columns: minmax(30%, 200px) minmax(300px, 70%);
+    padding: 0.25em;
+}
+
+.item {
+    padding: 0 1em;
+    line-height: 1.5em;
+}
+
+.subtotal {
+    text-align: right;
+}
+
+.subtotal span {
+    color: #b61827;
+}
+
+.header {
+    background-color: #dadce0;
+    position: relative;
+    font-size: 12px;
+    padding: 0.8em;
+    display: grid !important;
+    grid-template-columns: auto auto auto;
+}
+
+.card {
+    box-shadow: 1px solid #dadce0;
+    border: 1px solid #dadce0;
+    border-radius: 0.25em;
+    margin-bottom: 0.75em;
+    padding: 1.8em;
+    word-wrap: break-word;
+    display: block;
+    overflow: auto;
+}

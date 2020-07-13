@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <%- include('fragment/header') %>
+        <link rel="stylesheet" href="resources/styles/invoice.css">
+    </head>
+
+    <body>
+        <%- include('fragment/navbar') %>
+        <h1>Sales Report</h1>
+        <div class="card">
+            <% if (list.length === 0) { %>
+            <div class="card sale">
+                OH NO. NO SALES!
+            </div>
+            <% } else {
+                    for(var order of list) {
+                        %>
+            <div class="card sale">
+                <div class="header">
+                    <div>
+                        <b>ORDER PLACED</b><br>
+                        <%= new Date(order.date).toDateString() %>
+                    </div>
+                    <div>
+                        <b>Customer</b><br>
+                        <%= order.name %>
+                    </div>
+                    <div>
+                        <b>ORDER #</b><br>
+                        <%= order.id %>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="grid">
+                        <div class="item">
+                            <p><%= order.mango %> Mango juices</p>
+                            <p><%= order.berry %> Berry juices</p>
+                            <p><%= order.apple %> Apple juices</p>
+                        </div>
+
+                        <div class="subtotal">
+                            Subtotal: <span>$ <%= order.subtotal.toFixed(2) %></span><br>
+                            13% of Taxes: <span>$ <%= order.tax.toFixed(2) %></span><br>
+                            <p>
+                                Total: <span>$ <b><%= order.total.toFixed(2) %></b></span><br>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }}  %>
+        <%- include('fragment/footer') %>
+    </body>
+
+</html>
